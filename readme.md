@@ -25,3 +25,11 @@ set_save_folder("cache")
 
 Working interactively, we can delete cached objects with `.delete()` and rename
 them with `.rename()`.
+
+## Installation
+
+Can be installed with
+
+```r
+remotes::install_github("KiwiMateo/dnra")
+```
