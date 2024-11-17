@@ -1,16 +1,18 @@
 Package: dnra
 Type: Package
 Title: Cached assignment
-Version: 0.1.0
+Version: 1.0.0
 Author: Matt Hendtlass
 Maintainer: Matt Hendtlass <m.hendtlass@gmail.com>
 Description: Provides an assignment operator %<~% that (i) will not assign if 
   the object already exists and (ii) caches to a given folder.
-License: GPL
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr
