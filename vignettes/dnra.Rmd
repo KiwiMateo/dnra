@@ -39,15 +39,15 @@ This avoids breaking the flow of your script while still not recomputing the
 
 This main function, `%<~%`, in `dnra` is an alternative assignment operator 
 that:
-
-- assigns and caches an object if it does not exist and has not previously been 
+  
+  - assigns and caches an object if it does not exist and has not previously been 
 cached,
 - loads from cache if the binding does not exist but a cache does, and
 - does nothing if an object exists.
 
 Additionally, objects assigned with `%<~%` have an attribute "run_time" that
 records the length of time to compute the value. This can be extracted with
-`get_runtime`.
+`get_runtime()`.
 
 The intended use is in scripts that may be extended, where long calculations may
 not need to be rerun, and manually saving and loading an object creates clutter.
@@ -55,8 +55,8 @@ The `dnra` package can also be used in place of R markdown caching to avoid
 having to worry that changing a chunk variable or some other part of a chunk
 will require re-running the two-hour model-fitting.
 
-Objects are saved to a folder specified by `set_save_folder`, and can be deleted
-or renamed with `.delete` or `.rename`.
+Objects are saved to a folder specified by `set_save_folder()`, and can be deleted
+or renamed with `.delete()` or `.rename()`.
 
 
 ### Example
@@ -77,14 +77,14 @@ a %<~% 2
 a
 ```
 
-We remove `a` and delete the cache with `.delete`
+We remove `a` and delete the cache with `.delete()`
 
 ```{r}
 .delete(a)
 exists("a")
 ```
 
-and rename with `.rename`
+and rename with `.rename()`
 
 ```{r}
 a %<~% 1
@@ -94,7 +94,7 @@ exists("a")
 ```
 
 If an object exists already, then `%<~%` does not overwrite or cache:
-
+  
 ```{r}
 a <- 1
 a %<~% 2
@@ -104,7 +104,7 @@ a %<~% 3
 a
 ```
 
-The run time can be extracted with `get_runtime`.
+The run time can be extracted with `get_runtime()`.
 
 ```{r}
 get_runtime(a)
@@ -116,7 +116,7 @@ get_runtime(a)
 Since user-defined infix functions have low priority, we can get errors or
 unexpected results when the RHS contains infix functions of higher priority.
 
-```{r}
+```{r, eval = FALSE}
 c %<~% 1 + 2 # returns 3
 c # equals 1!!
 
@@ -124,4 +124,3 @@ c # equals 1!!
 c %<~% (1 + 2)
 c # equals 3 :)
 ```
-
